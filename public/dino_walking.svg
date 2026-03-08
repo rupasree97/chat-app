@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+  <style>
+    .leg1 { animation: walk1 0.4s linear infinite alternate; transform-origin: 35px 65px; }
+    .leg2 { animation: walk2 0.4s linear infinite alternate; transform-origin: 50px 65px; }
+    @keyframes walk1 { 0% { transform: rotate(-30deg); } 100% { transform: rotate(30deg); } }
+    @keyframes walk2 { 0% { transform: rotate(30deg); } 100% { transform: rotate(-30deg); } }
+    .body { fill: #4CAF50; stroke: #1B5E20; stroke-width: 1.5; stroke-linejoin: round; }
+    .body-dark { fill: #2E7D32; stroke: #1B5E20; stroke-width: 1.5; stroke-linejoin: round; }
+    .accent { fill: #81C784; stroke: #1B5E20; stroke-width: 1; stroke-linejoin: round; }
+    .jaw { animation: roar 3s ease-in-out infinite; transform-origin: 75px 35px; }
+    @keyframes roar { 0%, 80%, 100% { transform: rotate(0deg); } 90% { transform: rotate(20deg); } }
+    .eye { fill: #FFF; }
+    .pupil { fill: #000; }
+  </style>
+
+  <!-- Spines -->
+  <path class="accent" d="M22,46 L18,36 L30,43 Z" />
+  <path class="accent" d="M36,36 L34,24 L44,31 Z" />
+  <path class="accent" d="M50,22 L48,10 L58,18 Z" />
+  <path class="accent" d="M66,16 L68,4 L74,13 Z" />
+
+  <!-- Back Leg (Darker, rendered behind body) -->
+  <g class="leg1">
+    <path class="body-dark" d="M35,65 C35,80 30,90 25,95 L35,95 C40,85 45,75 45,65 Z" />
+    <path class="body-dark" d="M25,95 L21,95 L22,90 Z" />
+    <path class="body-dark" d="M30,95 L26,95 L27,90 Z" />
+  </g>
+
+  <!-- Tail to Head (Main Body) -->
+  <path class="body" d="M10,75 Q0,55 20,45 C35,40 40,20 60,15 C75,10 85,15 90,20 L95,25 L95,33 L80,35 L80,40 L70,45 C65,65 55,75 35,70 C25,65 15,80 10,75 Z" />
+
+  <!-- Head Details (Upper Jaw) -->
+  <path class="body" d="M75,20 C85,15 95,20 95,25 L95,35 L75,35 Z" />
+
+  <!-- Lower Jaw (Animated) -->
+  <g class="jaw">
+    <path class="body" d="M75,38 L92,43 L85,48 L70,45 Z" />
+    <polygon fill="#FFF" stroke="#1B5E20" stroke-width="0.5" points="80,38 82,34 84,39" />
+    <polygon fill="#FFF" stroke="#1B5E20" stroke-width="0.5" points="86,40 88,36 90,41" />
+  </g>
+
+  <!-- Tiny Arms -->
+  <path class="body" d="M65,48 L75,54 L70,58" fill="none" />
+  <!-- Arm Claws -->
+  <line x1="75" y1="54" x2="78" y2="52" stroke="#1B5E20" stroke-width="1" />
+  <line x1="75" y1="54" x2="77" y2="56" stroke="#1B5E20" stroke-width="1" />
+
+  <!-- Eye -->
+  <circle class="eye" cx="78" cy="24" r="3" stroke="#1B5E20" stroke-width="1" />
+  <circle class="pupil" cx="80" cy="24" r="1.5" />
+
+  <!-- Front Leg (Lighter, rendered in front) -->
+  <g class="leg2">
+    <path class="body" d="M50,65 C50,80 45,90 40,95 L50,95 C55,85 60,75 60,65 Z" />
+    <path class="body" d="M40,95 L36,95 L37,90 Z" />
+    <path class="body" d="M45,95 L41,95 L42,90 Z" />
+  </g>
+</svg>

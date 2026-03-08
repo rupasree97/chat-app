@@ -1,0 +1,492 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  background-color: #0a0e17;
+  color: #E6ECFF;
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-glass backdrop-blur-md border border-glass-border;
+  }
+
+  .glass-hover {
+    @apply hover:bg-glass-hover transition-all duration-300;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+  }
+}
+
+/* Custom Cyber Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0e17;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e2330;
+  border-radius: 4px;
+  border: 1px solid #00f3ff20;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5865F2;
+  box-shadow: 0 0 10px #5865F2;
+}
+
+/* ── Voice Call Styles ── */
+.voice-tile {
+  aspect-ratio: 16 / 10;
+}
+
+.voice-tile-speaking {
+  animation: speakingGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes speakingGlow {
+
+  0%,
+  100% {
+    border-color: rgba(74, 222, 128, 0.6);
+    box-shadow: 0 0 12px rgba(74, 222, 128, 0.2), inset 0 0 12px rgba(74, 222, 128, 0.03);
+  }
+
+  50% {
+    border-color: rgba(74, 222, 128, 1);
+    box-shadow: 0 0 24px rgba(74, 222, 128, 0.4), inset 0 0 20px rgba(74, 222, 128, 0.06);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Mention Highlight ── */
+.mention-highlight {
+  background-color: rgba(88, 101, 242, 0.25);
+  color: #dee0fc;
+  padding: 0 2px;
+  border-radius: 3px;
+  font-weight: 500;
+  transition: background-color 0.15s ease;
+}
+
+.mention-highlight:hover {
+  background-color: rgba(88, 101, 242, 0.45);
+  color: #ffffff;
+}
+
+/* ─────────────────────────────────────────────────────────── */
+/* ── Theme Character Animations ── */
+/* ─────────────────────────────────────────────────────────── */
+
+.anim-unicorn-fly {
+  animation: unicornFly 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes unicornFly {
+  0% {
+    transform: translate(-150px, 0) rotate(5deg) scale(0.9);
+    opacity: 0;
+    filter: drop-shadow(0 0 0px rgba(255, 105, 180, 0));
+  }
+
+  10% {
+    opacity: 1;
+    transform: translate(50px, -20px) rotate(-5deg) scale(1);
+    filter: drop-shadow(0 5px 15px rgba(255, 105, 180, 0.6));
+  }
+
+  30% {
+    transform: translate(150px, 10px) rotate(5deg) scale(1.1);
+  }
+
+  50% {
+    transform: translate(250px, -25px) rotate(-10deg) scale(1.2);
+  }
+
+  70% {
+    transform: translate(350px, 15px) rotate(10deg) scale(1.1);
+  }
+
+  85% {
+    opacity: 1;
+    transform: translate(450px, -20px) rotate(-5deg) scale(1);
+    filter: drop-shadow(0 5px 15px rgba(255, 105, 180, 0.6));
+  }
+
+  95%,
+  100% {
+    transform: translate(600px, 0) rotate(5deg) scale(0.9);
+    opacity: 0;
+    filter: drop-shadow(0 0 0px rgba(255, 105, 180, 0));
+  }
+}
+
+.anim-ninja-dash {
+  animation: ninjaDash 8s cubic-bezier(0.1, 0.9, 0.2, 1) infinite;
+}
+
+@keyframes ninjaDash {
+  0% {
+    transform: translate(-100px, 50px) scale(0);
+    opacity: 0;
+    filter: blur(5px);
+  }
+
+  10% {
+    transform: translate(50px, 50px) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  15% {
+    transform: translate(50px, 50px) scale(1) rotate(0deg);
+  }
+
+  20% {
+    transform: translate(250px, 0px) scale(1.5) rotate(360deg);
+    filter: drop-shadow(0 0 10px #000);
+  }
+
+  30% {
+    transform: translate(250px, 0px) scale(1.5) rotate(360deg);
+  }
+
+  /* Pause to throw shuriken */
+  35% {
+    transform: translate(400px, 60px) scale(0.8) rotate(720deg);
+    filter: blur(2px);
+  }
+
+  40%,
+  100% {
+    transform: translate(500px, 60px) scale(0);
+    opacity: 0;
+    filter: blur(5px);
+  }
+}
+
+.anim-ghost-haunt {
+  animation: ghostHaunt 14s ease-in-out infinite;
+}
+
+@keyframes ghostHaunt {
+  0% {
+    transform: translate(100px, 100px) scale(0.5);
+    opacity: 0;
+  }
+
+  15% {
+    transform: translate(150px, -20px) scale(1.2);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+  }
+
+  25% {
+    transform: translate(150px, -20px) scale(1.3);
+    opacity: 0;
+  }
+
+  /* Vanish */
+  35% {
+    transform: translate(-50px, 40px) scale(0.8);
+    opacity: 0;
+  }
+
+  45% {
+    transform: translate(50px, -40px) scale(1.5);
+    opacity: 1;
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.9));
+  }
+
+  /* Reappear large */
+  60% {
+    transform: translate(250px, 10px) scale(1);
+    opacity: 0.6;
+  }
+
+  75% {
+    transform: translate(350px, -30px) scale(0.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(350px, -30px);
+    opacity: 0;
+  }
+}
+
+.anim-alien-abduct {
+  animation: alienAbduct 12s ease-in-out infinite;
+}
+
+@keyframes alienAbduct {
+  0% {
+    transform: translate(-100px, -100px) scale(0.5);
+    opacity: 0;
+  }
+
+  20% {
+    transform: translate(150px, -50px) scale(1.5);
+    opacity: 1;
+    filter: drop-shadow(0 20px 20px rgba(0, 255, 100, 0.8));
+  }
+
+  /* Hover in middle */
+  40% {
+    transform: translate(150px, -40px) scale(1.5);
+    opacity: 1;
+    filter: drop-shadow(0 50px 30px rgba(0, 255, 100, 0.9));
+  }
+
+  /* Beam down */
+  60% {
+    transform: translate(150px, -60px) scale(1.5);
+    opacity: 1;
+    filter: drop-shadow(0 20px 20px rgba(0, 255, 100, 0.8));
+  }
+
+  /* Beam up */
+  80% {
+    transform: translate(400px, -150px) scale(0.2);
+    opacity: 0;
+    filter: drop-shadow(0 0 0 rgba(0, 255, 100, 0));
+  }
+
+  /* Zoom away */
+  100% {
+    opacity: 0;
+  }
+}
+
+.anim-dragon-soar {
+  animation: dragonSoar 16s ease-in-out infinite;
+}
+
+@keyframes dragonSoar {
+  0% {
+    transform: translate(-150px, 100px) scale(1) rotate(-15deg);
+    opacity: 0;
+  }
+
+  15% {
+    transform: translate(50px, -40px) scale(2) rotate(5deg);
+    opacity: 1;
+    filter: drop-shadow(0 10px 15px rgba(255, 100, 0, 0.6));
+  }
+
+  35% {
+    transform: translate(200px, 20px) scale(1.5) rotate(-5deg);
+    filter: drop-shadow(0 15px 25px rgba(255, 50, 0, 0.8));
+  }
+
+  55% {
+    transform: translate(350px, -60px) scale(2.2) rotate(10deg);
+    filter: drop-shadow(0 5px 35px rgba(255, 150, 0, 0.9));
+  }
+
+  80% {
+    transform: translate(500px, 50px) scale(1) rotate(-10deg);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.anim-robot-glitch {
+  animation: robotGlitch 10s steps(10, end) infinite;
+}
+
+@keyframes robotGlitch {
+  0% {
+    transform: translate(-50px, 0);
+    opacity: 0;
+  }
+
+  10% {
+    transform: translate(50px, 0) scale(1.2);
+    opacity: 1;
+    filter: hue-rotate(90deg);
+  }
+
+  12% {
+    transform: translate(45px, 5px) scale(1.2) skewX(20deg);
+    filter: hue-rotate(-90deg);
+  }
+
+  14% {
+    transform: translate(50px, 0) scale(1.2);
+    filter: none;
+  }
+
+  30% {
+    transform: translate(150px, -20px) scale(1.5);
+  }
+
+  32% {
+    transform: translate(160px, -25px) scale(1.5) skewY(-20deg);
+    opacity: 0.5;
+  }
+
+  34% {
+    transform: translate(150px, -20px) scale(1.5);
+    opacity: 1;
+  }
+
+  60% {
+    transform: translate(250px, 20px) scale(1.8);
+    filter: drop-shadow(0 0 20px #0ff);
+  }
+
+  62% {
+    transform: translate(240px, 10px) scale(2);
+    opacity: 0;
+  }
+
+  64% {
+    transform: translate(250px, 20px) scale(1.8);
+    opacity: 1;
+  }
+
+  80%,
+  100% {
+    transform: translate(400px, 0);
+    opacity: 0;
+  }
+}
+
+.anim-rhino-charge {
+  animation: rhinoCharge 7s ease-in infinite;
+}
+
+@keyframes rhinoCharge {
+  0% {
+    transform: translate(-100px, 80px) scale(1.5);
+    opacity: 0;
+  }
+
+  10% {
+    transform: translate(-50px, 80px) scale(1.5);
+    opacity: 1;
+  }
+
+  20% {
+    transform: translate(0px, 80px) scale(1.6) rotate(-5deg);
+  }
+
+  25% {
+    transform: translate(50px, 80px) scale(1.4) rotate(5deg);
+  }
+
+  30% {
+    transform: translate(100px, 80px) scale(1.7) rotate(-5deg);
+    filter: drop-shadow(10px 5px 10px rgba(0, 0, 0, 0.5));
+  }
+
+  40% {
+    transform: translate(200px, 80px) scale(1.5) rotate(5deg);
+  }
+
+  50% {
+    transform: translate(300px, 80px) scale(1.8) rotate(-5deg);
+  }
+
+  60% {
+    transform: translate(400px, 80px) scale(1.5) rotate(5deg);
+    opacity: 0.8;
+  }
+
+  70%,
+  100% {
+    transform: translate(550px, 80px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.anim-dino-stomp {
+  animation: dinoStomp 10s linear infinite;
+}
+
+@keyframes dinoStomp {
+  0% {
+    transform: translate(-100px, 50px) scale(1.5);
+    opacity: 0;
+  }
+
+  10% {
+    transform: translate(-50px, 30px) scale(1.5) rotate(-10deg);
+    opacity: 1;
+  }
+
+  15% {
+    transform: translate(-25px, 60px) scale(1.6) rotate(0deg);
+    filter: drop-shadow(0 20px 5px rgba(0, 0, 0, 0.4));
+  }
+
+  /* STOMP */
+  30% {
+    transform: translate(50px, 20px) scale(1.8) rotate(15deg);
+  }
+
+  35% {
+    transform: translate(75px, 60px) scale(1.9) rotate(0deg);
+    filter: drop-shadow(0 25px 8px rgba(0, 0, 0, 0.5));
+  }
+
+  /* STOMP */
+  50% {
+    transform: translate(150px, 10px) scale(2.2) rotate(-15deg);
+  }
+
+  55% {
+    transform: translate(175px, 60px) scale(2.3) rotate(0deg);
+    filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.6));
+  }
+
+  /* MEGA STOMP */
+  70% {
+    transform: translate(250px, 20px) scale(1.8) rotate(10deg);
+  }
+
+  75% {
+    transform: translate(275px, 60px) scale(1.6) rotate(0deg);
+    filter: drop-shadow(0 20px 5px rgba(0, 0, 0, 0.4));
+  }
+
+  /* STOMP */
+  90%,
+  100% {
+    transform: translate(400px, 50px) scale(1.5);
+    opacity: 0;
+  }
+}
